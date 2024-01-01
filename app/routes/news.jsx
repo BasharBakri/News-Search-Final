@@ -37,7 +37,7 @@ export async function action({ request }) {
       }
       try {
         const result = await refineSearchTerm(searchTerm);
-        const refinedResult = result.data.choices[0].message.content.slice(0, -1);
+        const refinedResult = result.data.choices[0].message.content;
         const search = await createSearch({
           userSearchString: searchTerm,
           botSearchString: refinedResult,

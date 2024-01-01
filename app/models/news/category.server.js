@@ -41,7 +41,7 @@ export async function fetchCategory(category) {
 
   const subscriptionKey = process.env.BING_API_KEY;
   const host = "api.bing.microsoft.com";
-  const path = "/v7.0/news/trendingtopics";
+  const path = "/v7.0/news";
 
   // const mkt = market;
 
@@ -57,7 +57,7 @@ export async function fetchCategory(category) {
   try {
     const response = await fetch(url, requestOptions);
     const result = await response.json();
-    console.log(result, 'abc');
+    console.log(result, '60 category.server');
     return result.value;
   } catch (error) {
     console.log('error', error);
