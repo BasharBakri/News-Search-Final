@@ -1,5 +1,5 @@
 export async function bingNewsSearch(search) {
-  console.log('Searching news for: ' + search);
+  console.log(search, 'searchterm 3');
 
   const subscriptionKey = process.env.BING_API_KEY;
   const host = "api.bing.microsoft.com";
@@ -8,7 +8,8 @@ export async function bingNewsSearch(search) {
   const freshness = "Month";
   const sortBy = "relevance";
   const offset = 0;
-  const mkt = "en-WW";
+  const mkt = "en-us"; // en-ww/ en-WW causes results to not be returned. Try to understand later.
+  // const safeSearch = 'moderate';
 
   const url = `https://${host}${path}?q=${encodeURIComponent(search)}&count=${count}&freshness=${freshness}&sortBy=${sortBy}&offset=${offset}&mkt=${mkt}`;
 
