@@ -4,7 +4,7 @@ export async function bingNewsSearch(search) {
   const subscriptionKey = process.env.BING_API_KEY;
   const host = "api.bing.microsoft.com";
   const path = "/v7.0/news/search";
-  const count = 100;
+  const count = 30;
   const freshness = "Month";
   const sortBy = "relevance";
   const offset = 0;
@@ -25,7 +25,7 @@ export async function bingNewsSearch(search) {
     console.log(response.status, response.statusText, 'text and status');
     console.log(response.headers, 'header');
     const result = await response.json();
-    console.log('Estimated results newsserver 25', result);
+    console.log('Estimated results newsserver 25', result.value);
     return result.value;
   } catch (error) {
     console.log('error', error);

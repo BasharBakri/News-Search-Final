@@ -13,18 +13,19 @@ export async function loader({ params }) {
 
     try {
 
-      const searchResultsPromise = bingNewsSearch(params.search);
+      const searchResultsPromise = await bingNewsSearch(params.search);
 
 
 
       const searchResults = await searchResultsPromise;
-      const summaryArray = searchResults?.map((oneResult) => {
+      const summaryArray = await searchResults?.map((oneResult) => {
         return {
           name: oneResult.name,
           description: oneResult.description
         };
       });
-      const summaryResponsePromise = summarizeSearch(params.search, summaryArray);
+      console.log(searchResults, summaryArray, 'news search page 27');
+      const summaryResponsePromise = await summarizeSearch(params.search, summaryArray);
       return defer({
         searchResults: searchResultsPromise,
         summaryResponse: summaryResponsePromise
@@ -34,6 +35,7 @@ export async function loader({ params }) {
       throw error;
     }
   } else {
+    console.log('null');
     return null;
   }
 
